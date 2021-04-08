@@ -33,6 +33,6 @@ class User
 
     //show all the publication
     public function showPublication(){
-
+        
     }
 }

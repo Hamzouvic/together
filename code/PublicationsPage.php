@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>Together</title>
-</head>
-<body>
-    <!-- 
+<?php
+
+include_once 'Publications.php';
+$publications = new Publication();
+$list = $publications->getAll();
+include 'Componenets/header.php';
+?>
 <div class="w-full">
     <nav class="bg-white shadow-lg">
         <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
@@ -32,4 +28,27 @@
             </div>
         </div>
     </nav>
--->
+<div class="min-h-screen bg-gray-200 flex justify-center items-center flex-col">
+   <!-- Start of component -->
+   <?php foreach ($list as $row):?>
+   <div class="max-w-2xl bg-white border-2 border-gray-300 p-5 rounded-md tracking-wide shadow-lg " style="position: relative;min-width: 500px;">
+      <div id="header" class="flex"> 
+         <img alt="mountain" class="w-45 rounded-md border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+         <div id="body" class="flex flex-col ml-5" >
+            <h4 id="name" class="text-xl font-semibold mb-2"><?= $row['id']?></h4>
+            <p id="job" class="text-gray-800 mt-2"><?= $row['titre']?></p>
+            <div class="flex mt-5">
+               <img alt="avatar" class="w-6 rounded-full border-2 border-gray-300" src="https://picsum.photos/seed/picsum/200" />
+               <p class="ml-3">John Doe</p>
+            </div>
+            <a href="Post.php?id=<?= $row['id']?>">
+                <button class="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" style="position: absolute; right: 10px; bottom:10px;">
+                    see more
+                </button>
+            </a>
+         </div>
+      </div>
+   </div>
+   <?php endforeach;?>
+   <!-- End of component -->
+</div>

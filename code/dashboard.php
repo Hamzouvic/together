@@ -1,8 +1,7 @@
 <?php
-session_start();
-if(!isset($_SESSION['connected'])) header('Location: acces.php');
 
-include 'header.php';
+include 'Authorization.php';
+include 'Componenets/header.php';
 ?>
 <div>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
@@ -75,6 +74,7 @@ include 'header.php';
         <div class="flex-1 flex flex-col overflow-hidden">
             <header class="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
                 <div class="flex items-center">
+                    
                     <button @click="sidebarOpen = true" class="text-gray-500 focus:outline-none lg:hidden">
                         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -98,6 +98,9 @@ include 'header.php';
                 </div>
     
                 <div class="flex items-center">
+                <a href="PublicationsPage.php"> <button class="bg-black hover:bg-blue-dark text-white font-bold py-2 px-4 rounded">
+                   publications
+                </button></a>
                     <div x-data="{ notificationOpen: false }" class="relative">
                         <button @click="notificationOpen = ! notificationOpen"
                             class="flex mx-4 text-gray-600 focus:outline-none">

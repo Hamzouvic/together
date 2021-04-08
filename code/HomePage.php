@@ -1,5 +1,6 @@
 <?php
     include_once 'User.php';
+    session_start();
     $error = false;
     if (!empty($_POST)) {
         $username = $_POST['username'];
@@ -8,7 +9,12 @@
         $error = !$user->connect($username,$password);
     }
 ?>
-<?php include 'header.php';?>  
+<?php include 'Componenets/header.php';
+if (isset($_SESSION['connected']))
+    include 'Componenets/connected.php';
+    //the content below will not be shown if the user is already connected
+?> 
+
 
 <div class="flex flex-1 items-center justify-center" style="margin-top: 100px;">
     <div class="rounded-lg sm:border-2 px-4 lg:px-24 py-16 lg:max-w-xl sm:max-w-md w-full text-center">
@@ -46,4 +52,4 @@
     </div>
 </div>
 
-<?php include 'foot.php';?>
+<?php include 'Componenets/foot.php';?>

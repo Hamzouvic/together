@@ -6,11 +6,13 @@ class Database
     private $password = '';
 
     protected $connection = null;
+
     public function __construct(){
+        if(isset($this->connection)) return;
         try {
             $this->connection = new PDO($this->dsn,$this->user,$this->password);
         }catch(PDOException $ex){
-                $ex->showMessage();
+            echo "connection failed";
                 die();
         }
     }
